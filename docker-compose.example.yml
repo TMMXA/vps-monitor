@@ -1,0 +1,25 @@
+services:
+  vps-monitor:
+    build: .
+    container_name: vps-monitor
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      TZ: Asia/Hong_Kong
+      AKILE_CLIENT_ID: "replace-me"
+      AKILE_SECRET: "replace-me"
+      TELEGRAM_BOT_TOKEN: "replace-me"
+      TELEGRAM_CHAT_IDS: "123456789"
+      # TG_TOKEN and CHAT_ID are supported aliases.
+      # TELEGRAM_PROXY: "http://proxy-host:proxy-port"
+      ADMIN_TOKEN: "replace-me"
+      SERVER_IDS: "12345,67890"
+      COLLECT_INTERVAL_MINUTES: "30"
+      REPORT_TIME: "09:00"
+      RETENTION_DAYS: "90"
+      DATABASE_PATH: "/data/vps-monitor.sqlite3"
+      THRESHOLD_12345_GIB_PER_HOUR: "15"
+      THRESHOLD_67890_GIB_PER_HOUR: "1"
